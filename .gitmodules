@@ -1,0 +1,6 @@
+[submodule "displace"]
+	path = displace
+	url = https://github.com/dpiegdon/displace.git
+[submodule "herbstluftwm"]
+	path = herbstluftwm
+	url = https://github.com/herbstluftwm/herbstluftwm
