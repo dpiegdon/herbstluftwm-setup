@@ -1,0 +1,80 @@
+#!/bin/sh -x
+# vim: fdm=marker
+
+cd
+
+displace -af
+xrdb ~/.Xdefaults
+# disable screensaver
+xset s off
+xset -dpms
+xset -b	# disable bell (pcskr)
+(~/bin/hid-setup &)
+
+# check or pick display manager {{{
+
+if [ -z "$WINDOWMANAGER" ]; then
+	. ~/.environment
+fi;
+
+if [ -z "$WINDOWMANAGER" ]; then
+	WINDOWMANAGER=herbstluftwm --locked
+	# or one of:
+	#   /usr/bin/xterm
+	#   /usr/bin/startkde
+	#   /usr/bin/gnome-session
+fi;
+
+export WINDOWMANAGER
+
+# }}}
+
+# start all the accompanying programs {{{
+
+start_screenlocker() {
+	which xautolock > /dev/null 2>&1 && (
+		KILLEROPT=""
+		BATTERYCOUNT=$(ls -1 /sys/class/power_supply/ | grep BAT > /dev/null 2>&1 | wc -l)
+		[ $BATTERYCOUNT -ge 1 ] && KILLEROPT='-killtime 1 -killer "systemctl suspend"'
+
+		xautolock -locker ~/.qtile/bin/xlock -time 3 \
+			-notify 15 -notifier '/usr/bin/notify-send -u critical -t 14000 -- LOCKING SHORTLY' \
+			$KILLEROPT \
+			&
+
+		XAUTOLOCK_FILE="/tmp/.qtile_xautolock_$!"
+		touch $XAUTOLOCK_FILE
+
+		# disable for these
+		echo $HOSTNAME | grep '^CID[0-9]*' > /dev/null && xautolock -disable
+	)
+}
+
+case `basename "$WINDOWMANAGER"` in
+	*)
+		echo $WINDOWMANAGER | grep '\<qtile\>' > /dev/null 2>&1 && {
+			start_screenlocker
+			which dunst && (exec dunst&)
+		}
+		;;
+esac
+
+# }}}
+
+# start dbus {{{
+
+if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+	eval `dbus-launch --sh-syntax --exit-with-session`
+fi
+
+# }}}
+
+# host-specific session setup {{{
+
+[ -e $HOME/.herbstluftwm/config/local.xsession ] && $HOME/.herbstluftwm/config/local.xsession
+
+# }}}
+
+# execute display manager
+exec $WINDOWMANAGER > ~/.windowmanager.log 2>&1
+
