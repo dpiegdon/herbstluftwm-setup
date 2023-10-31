@@ -11,7 +11,7 @@ keybindings() {
 	Mod=Mod4   # Use the super key as the main modifier
 
 	hc keybind $Mod-Control-Shift-q   quit
-	#hc keybind $Mod-Shift-q           reload
+	hc keybind $Mod-Shift-q           reload
 	hc keybind $Mod-q                 close
 	hc keybind $Mod-Control-Return    spawn terminal -e tmux -2 attach
 	hc keybind $Mod-BackSpace         spawn dmenu_run -fn Monoid-7
@@ -179,7 +179,7 @@ xsetroot -solid '#220033'
 
 keybindings
 
-which polybar && (polybar &)
-which nm-applet && (nm-applet &)
+which polybar && { pgrep polybar || (polybar &) }
+which nm-applet && { pgrep nm-applet || (nm-applet &) }
 
 xsetroot -solid '#330011'

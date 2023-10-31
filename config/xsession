@@ -29,7 +29,7 @@ export WINDOWMANAGER
 
 # }}}
 
-# start all the accompanying programs {{{
+# start screenlocker {{{
 
 start_screenlocker() {
 	which xautolock > /dev/null 2>&1 && (
@@ -44,18 +44,12 @@ start_screenlocker() {
 
 		XAUTOLOCK_FILE="/tmp/.qtile_xautolock_$!"
 		touch $XAUTOLOCK_FILE
-
-		# disable for these
-		echo $HOSTNAME | grep '^CID[0-9]*' > /dev/null && xautolock -disable
 	)
 }
 
 case `basename "$WINDOWMANAGER"` in
-	*)
-		echo $WINDOWMANAGER | grep '\<qtile\>' > /dev/null 2>&1 && {
-			start_screenlocker
-			which dunst && (exec dunst&)
-		}
+	herbstluftwm|qtile)
+		start_screenlocker
 		;;
 esac
 
