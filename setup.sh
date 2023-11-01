@@ -35,5 +35,7 @@ for BINARY in $(pwd)/bin/*; do
 	ln -s "$BINARY" "$TARGET"
 done;
 
-rm -f ~/.xsession
-ln -s $(pwd)/config/xsession ~/.xsession
+for L in ~/.xsession ~/.xinitrc; do
+	rm -f $L
+	ln -s $(pwd)/config/xsession $L
+done;
