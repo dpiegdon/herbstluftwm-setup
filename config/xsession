@@ -18,7 +18,7 @@ if [ -z "$WINDOWMANAGER" ]; then
 fi;
 
 if [ -z "$WINDOWMANAGER" ]; then
-	WINDOWMANAGER=herbstluftwm --locked
+	WINDOWMANAGER="herbstluftwm --locked"
 	# or one of:
 	#   /usr/bin/xterm
 	#   /usr/bin/startkde
