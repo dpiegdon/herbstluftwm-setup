@@ -68,8 +68,8 @@ keybindings() {
 
 	# layouting
 	hc keybind $Mod-Return fullscreen toggle
-	#hc keybind $Mod-t floating toggle  # set whole TAG to floating?
-	hc keybind $Mod-t set_attr clients.focus.floating toggle
+	hc keybind $Mod-Shift-f floating toggle                   # set whole TAG to floating
+	hc keybind $Mod-f set_attr clients.focus.floating toggle  # or only current window
 	hc keybind $Mod-d set_attr clients.focus.decorated toggle
 	#hc keybind $Mod-m set_attr clients.focus.minimized true
 	#hc keybind $Mod-Control-m jumpto last-minimized
@@ -194,7 +194,11 @@ xsetroot -solid '#220033'
 
 keybindings
 
-which polybar && { pgrep polybar || (polybar &) }
-which nm-applet && { pgrep nm-applet || (nm-applet &) }
+for BINARY in	polybar \
+		nm-applet \
+		blueman-applet \
+		; do
+	which $BINARY && { pgrep $BINARY || ($BINARY &) }
+done;
 
 xsetroot -solid '#330011'
