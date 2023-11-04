@@ -18,6 +18,15 @@ keybindings() {
 	hc keybind $Mod-q                 close
 	hc keybind $Mod-Control-Return    spawn terminal -e tmux -2 attach
 	hc keybind $Mod-BackSpace         spawn dmenu_run -fn Monoid-7
+	
+	hc keybind XF86MonBrightnessDown  spawn backlightctl intel_backlight - 2
+	hc keybind XF86MonBrightnessUp    spawn backlightctl intel_backlight + 2
+	hc keybind XF86Favorites          spawn displace portrait
+
+	hc keybind $Mod-F10               spawn xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 1
+	hc keybind $Mod-F11               spawn xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+	hc keybind $Mod-F12               spawn pavucontrol
+
 
 	# basic movement in tiling and floating mode
 	# focusing clients
