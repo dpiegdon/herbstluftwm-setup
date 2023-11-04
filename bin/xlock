@@ -1,0 +1,10 @@
+#!/bin/sh
+pidof i3lock > /dev/null 2>&1 || {
+	which xlock-precommand > /dev/null 2>&1 && xlock-precommand
+	xset dpms 30 30 30
+	LOCKIMG="$HOME/.locked.png"
+	[ ! -e "$LOCKIMG" ] && LOCKIMG="$HOME/.herbstluftwm/locked.png"
+	i3lock -t -n -i "$LOCKIMG" -f -c 000000
+	xset -dpms
+	which xlock-postcommand > /dev/null 2>&1 && xlock-postcommand
+}

@@ -28,6 +28,10 @@ keybindings() {
 	hc keybind $Mod-F12               spawn pavucontrol
 
 
+	hc keybind $Mod-v                 spawn paste_to_qrcode
+	hc keybind $Mod-s                 spawn /usr/bin/gnome-screenshot
+	hc keybind $Mod-Shift-s           spawn /usr/bin/gnome-screenshot --window
+
 	# basic movement in tiling and floating mode
 	# focusing clients
 	hc keybind $Mod-h     focus left
