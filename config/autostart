@@ -176,7 +176,7 @@ keybindings() {
 	hc set smart_frame_surroundings hide_all
 	hc set smart_window_surroundings on
 	hc set mouse_recenter_gap 50
-	hc set raise_on_focus_temporarily true
+	hc set raise_on_focus_temporarily false
 
 	# rules
 	hc unrule -F
