@@ -119,6 +119,8 @@ keybindings() {
 	hc keybind $Mod-Shift-e     shift_to_monitor 1
 	hc keybind $Mod-r           focus_monitor 2
 	hc keybind $Mod-Shift-r     shift_to_monitor 2
+	hc keybind $Mod-t           focus_monitor 3
+	hc keybind $Mod-Shift-t     shift_to_monitor 3
 	hc keybind $Mod-Tab         cycle_all +1
 	hc keybind $Mod-Shift-Tab   cycle_all -1
 	#hc keybind $Mod-c cycle
@@ -172,9 +174,10 @@ keybindings() {
 	hc set focus_crosses_monitor_boundaries false
 	hc set window_gap 0
 	hc set frame_padding 0
-	hc set smart_window_surroundings off
 	hc set smart_frame_surroundings hide_all
 	hc set smart_window_surroundings on
+	hc set snap_distance 7
+	hc set snap_gap 1
 	hc set mouse_recenter_gap 50
 	hc set raise_on_focus_temporarily false
 
