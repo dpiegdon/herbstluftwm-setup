@@ -1,3 +1,4 @@
 #!/bin/sh
 
-exec stterm -f "Monoid-7" $@
+#exec stterm -f "Monoid-7" $@
+exec xterm -u8 $@
