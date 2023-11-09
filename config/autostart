@@ -212,6 +212,7 @@ keybindings
 for BINARY in	polybar \
 		nm-applet \
 		blueman-applet \
+		vmware-user \
 		; do
 	which $BINARY && { pgrep $BINARY || ($BINARY &) }
 done;
