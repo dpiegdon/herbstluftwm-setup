@@ -45,8 +45,9 @@ device_button_scrolling() {
 
 # Wacom Bamboo device names to use
 wacom_defs() {
-	WACOM_DEV_FINGER=$(device_ids "" "Wacom Bamboo 2FG 4x5 Finger")
-	WACOM_DEV_PEN=$(device_ids "" "Wacom Bamboo 2FG 4x5 Pen")
+	WACOM_DEV_FINGER=$(device_ids "" "Wacom Bamboo 2FG 4x5 Finger touch")
+	WACOM_DEV_PEN=$(device_ids    "" "Wacom Bamboo 2FG 4x5 Pen eraser")
+	WACOM_DEV_TOUCH=$(device_ids  "" "Wacom Bamboo 2FG 4x5 Pad pad")
 }
 
 # setup Wacom into default mode
@@ -206,11 +207,11 @@ keyboard_setup() {
 
 if [ $# -eq 0 ]; then
 	echo "HID setup"
-	#wacom_setup
+	wacom_setup
 	#trackball_setup
 	lefty_mouse_setup
 	right_ergonomic_mouse
-	apple_magic_trackpad2
+	#apple_magic_trackpad2
 	laptop
 	keyboard_setup
 fi
