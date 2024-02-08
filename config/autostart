@@ -102,13 +102,13 @@ hc_ui_config() {
 
 	# layouting
 	hc keybind $Mod-Return            fullscreen toggle
-	hc keybind $Mod-Shift-f           floating toggle                 # set whole TAG to floating
-	hc keybind $Mod-f set_attr        clients.focus.floating toggle   # or only current window
-	hc keybind $Mod-d set_attr        clients.focus.decorated toggle
-	#hc keybind $Mod-m set_attr        clients.focus.minimized true
-	#hc keybind $Mod-Control-m         jumpto last-minimized
+	hc keybind $Mod-Shift-f           floating toggle                          # set whole TAG to floating
+	hc keybind $Mod-f                 set_attr clients.focus.floating toggle   # or only current window
+	hc keybind $Mod-d                 set_attr clients.focus.decorated toggle
+	hc keybind $Mod-m                 set_attr clients.focus.minimized true
+	hc keybind $Mod-Shift-m           jumpto last-minimized
 	# unminimize all clients
-	hc keybind $Mod-Ctrl-m \
+	hc keybind $Mod-Control-m \
 		substitute FOCUS "tags.focus.name" \
 		foreach CLIENT clients. \
 			sprintf MINATT "%c.minimized" CLIENT \
@@ -129,13 +129,20 @@ hc_ui_config() {
 
 	#####################
 	# MOUSE
+	MouseLeft=Button1
+	MouseMiddle=Button2
+	MouseRight=Button3
 	hc mouseunbind --all
-	hc mousebind $Mod-Button1 move
-	hc mousebind $Mod-Button2 zoom
-	hc mousebind $Mod-Button3 resize
-	hc set focus_follows_mouse       true
-	hc set snap_distance             7
-	hc set snap_gap                  1
+	hc mousebind $Mod-$MouseLeft         move
+	hc mousebind $Mod-Shift-$MouseLeft   zoom
+	hc mousebind $Mod-Control-$MouseLeft resize
+	hc mousebind $Mod-Alt-$MouseLeft     call set_attr clients.focus.floating toggle
+	#hc mousebind $Mod-$MouseMiddle       call set_attr clients.focus.fullscreen toggle
+	#hc mousebind $Mod-$MouseRight        call set_attr clients.focus.minimized true
+	#hc mousebind $Mod-Shift-$MouseRight  call jumpto last-minimized
+	hc set focus_follows_mouse           true
+	hc set snap_distance                 7
+	hc set snap_gap                      1
 
 	#####################
 	# MONITOR SELECTION
