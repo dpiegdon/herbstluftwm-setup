@@ -137,6 +137,8 @@ hc_ui_config() {
 	hc mousebind $Mod-Shift-$MouseLeft   zoom
 	hc mousebind $Mod-Control-$MouseLeft resize
 	hc mousebind $Mod-Alt-$MouseLeft     call set_attr clients.focus.floating toggle
+	hc mousebind $Mod-$MouseMiddle       zoom
+	hc mousebind $Mod-$MouseRight        resize
 	#hc mousebind $Mod-$MouseMiddle       call set_attr clients.focus.fullscreen toggle
 	#hc mousebind $Mod-$MouseRight        call set_attr clients.focus.minimized true
 	#hc mousebind $Mod-Shift-$MouseRight  call jumpto last-minimized
