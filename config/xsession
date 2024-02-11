@@ -3,6 +3,15 @@
 
 cd
 
+xrandr | grep Virtual-0 > /dev/null 2>&1 && {
+	# running a virtual machine
+	xrandr | grep 2560x1440 > /dev/null 2>&1 || {
+		# add convenience mode if they are not supported.
+		xrandr --newmode 2560x1440 146.27 2560 2680 2944 3328 1440 1441 1444 1465 -Hsync\ +Vsync
+		xrandr --addmode Virtual-0 2560x1440
+	}
+}
+
 ~/bin/displace -af
 xrdb ~/.Xdefaults
 # disable screensaver
