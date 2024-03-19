@@ -21,6 +21,7 @@ hc_ui_config() {
 	hc keybind $Mod-q                 close
 	hc keybind $Mod-Control-Return    spawn terminal -e tmux -2 attach
 	hc keybind $Mod-BackSpace         spawn dmenu_run -fn Monoid-7
+	hc keybind $Mod-Escape            spawn xlock
 
 	# laptop function row
 	hc keybind XF86AudioMute          spawn amixer sset Master toggle
@@ -238,6 +239,8 @@ hc_ui_config() {
 xsetroot -solid '#220033'
 
 hc_ui_config
+
+polybar-msg cmd quit || true
 
 for BINARY in	polybar \
 		nm-applet \
