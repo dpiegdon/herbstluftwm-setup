@@ -166,8 +166,10 @@ apple_magic_trackpad2() {
 	IDS=$(device_ids "pointer" "Apple Inc. Magic Trackpad 2")
 	for ID in $IDS; do
 		xinput set-prop "$ID" "libinput Accel Speed" .1
+		xinput set-prop "$ID" "libinput Tapping Enabled" 1
+		xinput set-prop "$ID" "libinput Natural Scrolling Enabled" 0
 	done
-	[ -z "$IDS" ] || libinput-gestures-setup restart
+	[ -z "$IDS" ] || libinput-gestures-setup restart || true
 }
 
 # laptop defaults
@@ -211,7 +213,7 @@ if [ $# -eq 0 ]; then
 	#trackball_setup
 	lefty_mouse_setup
 	right_ergonomic_mouse
-	#apple_magic_trackpad2
+	apple_magic_trackpad2
 	laptop
 	keyboard_setup
 fi

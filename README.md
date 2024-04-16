@@ -17,3 +17,29 @@ Useful helper tools
 * xwininfo -- window information utility for X
  - xwininfo -root -children
 * xlsclients -- list client applications running on display
+
+Custom polybar
+--------------
+
+CURRENTLY NOT USED!
+
+install
+
+* `libcairo2-dev`
+* `libuv1-dev`
+* `libxcb-randr0-dev`
+* `libxcb-composite0-dev`
+* `libxcb-icccm4-dev`
+* `libxcb-util-dev`
+* `libxcb-ewmh-dev`
+* `libxcb-image0-dev`
+* `libpulse-dev`
+* `xcb-proto`
+
+init submodules
+
+run `build.sh` and use defaults (N) except for:
+
+* pulseaudio: YES
+* polybar-msg: YES
+* parallel make: YES
