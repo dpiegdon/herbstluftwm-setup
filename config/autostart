@@ -61,9 +61,11 @@ hc_ui_config() {
 
 	# splitting/removing frames
 	# create an empty frame at the specified direction / explode into subframes
-	hc keybind $Mod-apostrophe   	  split bottom
-	hc keybind $Mod-bracketright 	  split right
+	#hc keybind $Mod-apostrophe        split bottom
+	#hc keybind $Mod-bracketright      split right
+	hc keybind $Mod-Shift-z           split bottom
 	hc keybind $Mod-Shift-x           split explode
+	hc keybind $Mod-Shift-c           split right
 	# merge the current frame with its peer
 	hc keybind $Mod-x                 remove
 
