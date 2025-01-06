@@ -159,6 +159,10 @@ right_ergonomic_mouse() {
 	for ID in $IDS; do
 		device_button_scrolling "$ID" 8
 	done
+	IDS=$(device_ids "pointer" "ATTACK SHARK")
+	for ID in $IDS; do
+		device_button_scrolling "$ID" 8
+	done
 }
 
 # default apple trackpad, also restart libinput-gestures
@@ -197,7 +201,7 @@ keyboard_setup() {
 		xmodmap ~/.Xmodmap
 	fi;
 
-	for BADKEYBOARD in "IguanaWorks" "LifeCam Studio" "Nordic 2.4G" "MOSART" "Compx Pulsar Xlite"; do
+	for BADKEYBOARD in "IguanaWorks" "LifeCam Studio" "Nordic 2.4G" "MOSART" "Compx Pulsar Xlite" "ATTACK SHARK"; do
 		IDS=$(device_ids "keyboard" "$BADKEYBOARD")
 		for ID in $IDS; do
 			device_disable "$ID"
