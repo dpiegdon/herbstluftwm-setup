@@ -7,6 +7,9 @@ hc() {
 hc_ui_config() {
 	# also see:
 	# https://herbstluftwm.org/object-doc.html
+	#
+	# and for key names:
+	# /usr/include/X11/keysymdef.h
 
 	#######################################################################
 	# UI BINDINGS
@@ -80,6 +83,8 @@ hc_ui_config() {
 	hc keybind $Mod-Control-l         resize right +$resizestep
 
 	# tags
+	#tag_names=( \` {1..9} 0 - = )
+	#tag_keys=( grave {1..9} 0 minus equal )
 	tag_names=( {1..9} 0 - = )
 	tag_keys=( {1..9} 0 minus equal )
 
