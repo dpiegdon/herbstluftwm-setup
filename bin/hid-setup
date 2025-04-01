@@ -53,10 +53,12 @@ wacom_defs() {
 # setup Wacom into default mode
 wacom_setup() {
 	wacom_defs
-	echo "Wacom reset"
-	xsetwacom --set "$WACOM_DEV_PEN" Mode Absolute
-	xsetwacom --set "$WACOM_DEV_PEN" TabletPCButton "on"
-	xsetwacom --set "$WACOM_DEV_PEN" Touch "off"
+	if [ -n "$WACOM_DEV_PEN" ]; then
+		echo "Wacom reset"
+		xsetwacom --set "$WACOM_DEV_PEN" Mode Absolute
+		xsetwacom --set "$WACOM_DEV_PEN" TabletPCButton "on"
+		xsetwacom --set "$WACOM_DEV_PEN" Touch "off"
+	fi
 }
 
 # toggle use of touchpad on Wacom
@@ -126,11 +128,7 @@ wacom_toggle_relative() {
 trackball_setup() {
 	IDS=$(device_ids "pointer" "Kensington Slimblade")
 	for ID in $IDS; do
-		# swap top and bottom buttons against RSI
-		xinput set-button-map "$ID" 2 1 8 4 5 6 7 3
-		device_button_scrolling "$ID" 3
-		# or not?
-		#device_button_scrolling "$ID" 8
+		device_button_scrolling "$ID" 8
 		# sensitivity
 		xinput set-prop "$ID" "libinput Accel Speed" .7
 		# button + motion scrolling:
@@ -138,19 +136,8 @@ trackball_setup() {
 	done
 }
 
-# default left-hand ergonomic MOSART mouse
-lefty_mouse_setup() {
-	device_ids "pointer" "MOSART Semi. 2.4G Wireless Mouse" "Consumer Control" | while read ID; do
-		device_button_scrolling "$ID" 8
-	done
-
-	device_ids "pointer" "Logitech USB Optical Mouse" | while read ID; do
-		device_button_scrolling "$ID" 8
-	done
-}
-
 # default right-hand ergonomic mouse
-right_ergonomic_mouse() {
+right_mouse() {
 	IDS=$(device_ids "pointer" "Nordic 2.4G Wireless Receiver")
 	for ID in $IDS; do
 		device_button_scrolling "$ID" 8
@@ -159,7 +146,7 @@ right_ergonomic_mouse() {
 	for ID in $IDS; do
 		device_button_scrolling "$ID" 8
 	done
-	IDS=$(device_ids "pointer" "ATTACK SHARK")
+	IDS=$(device_ids "pointer" "ATTACK SHARK" "Consumer Control")
 	for ID in $IDS; do
 		device_button_scrolling "$ID" 8
 	done
@@ -169,11 +156,11 @@ right_ergonomic_mouse() {
 apple_magic_trackpad2() {
 	IDS=$(device_ids "pointer" "Apple Inc. Magic Trackpad 2")
 	for ID in $IDS; do
-		xinput set-prop "$ID" "libinput Accel Speed" .1
+		xinput set-prop "$ID" "libinput Accel Speed" 1
 		xinput set-prop "$ID" "libinput Tapping Enabled" 1
 		xinput set-prop "$ID" "libinput Natural Scrolling Enabled" 0
 	done
-	[ -z "$IDS" ] || libinput-gestures-setup restart || true
+	#[ -z "$IDS" ] || libinput-gestures-setup restart || true
 }
 
 # laptop defaults
@@ -214,9 +201,8 @@ keyboard_setup() {
 if [ $# -eq 0 ]; then
 	echo "HID setup"
 	wacom_setup
-	#trackball_setup
-	lefty_mouse_setup
-	right_ergonomic_mouse
+	trackball_setup
+	right_mouse
 	apple_magic_trackpad2
 	laptop
 	keyboard_setup
