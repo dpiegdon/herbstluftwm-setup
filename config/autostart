@@ -23,7 +23,7 @@ hc_ui_config() {
 	hc keybind $Mod-Shift-q           reload
 	hc keybind $Mod-q                 close
 	hc keybind $Mod-Control-Return    spawn terminal -e tmux -2 attach
-	hc keybind $Mod-BackSpace         spawn dmenu_run -fn Monoid-7
+	hc keybind $Mod-BackSpace         spawn ~/.herbstluftwm/bin/dmenu_run_history -fn Monoid-7
 	hc keybind $Mod-Escape            spawn xlock
 
 	# laptop function row
