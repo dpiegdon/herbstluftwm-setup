@@ -198,7 +198,13 @@ keyboard_setup() {
 
 ################################################################################
 
-if [ $# -eq 0 ]; then
+if [ -z "$DISPLAY" ]; then
+	# guess DISPLAY
+	export DISPLAY=$(who|awk "/^$USER  *seat.* \(:[0-9]\)/ { print \$6 }" |sed 's/[()]//g' | head -n1)
+fi
+
+if [ -n "$DISPLAY" ]; then
+	echo "display $DISPLAY"
 	echo "HID setup"
 	wacom_setup
 	trackball_setup
