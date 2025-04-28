@@ -206,7 +206,7 @@ fi
 
 if [ -z "$DISPLAY" ]; then
 	# guess DISPLAY
-	export DISPLAY=$(who|awk "/^$USER  *seat.* \(:[0-9]\)/ { print \$6 }" |sed 's/[()]//g' | head -n1)
+	export DISPLAY=$(who|awk "/^$USER  *(seat|console).* \(:[0-9]\)/ { print \$6 }" |sed 's/[()]//g' | head -n1)
 fi
 
 if [ -n "$DISPLAY" ]; then
