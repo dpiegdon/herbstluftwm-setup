@@ -198,6 +198,12 @@ keyboard_setup() {
 
 ################################################################################
 
+if [ "$1" = "--udev" ]; then
+	# we're (indirectly via systemd) triggered by udev, so lets wait for all devices to settle.
+	sleep 3
+	xinput list
+fi
+
 if [ -z "$DISPLAY" ]; then
 	# guess DISPLAY
 	export DISPLAY=$(who|awk "/^$USER  *seat.* \(:[0-9]\)/ { print \$6 }" |sed 's/[()]//g' | head -n1)
