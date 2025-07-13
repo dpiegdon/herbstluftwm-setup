@@ -73,18 +73,19 @@ hc_ui_config() {
 	hc keybind $Mod-Shift-l           shift right
 	hc keybind $Mod-Shift-Right       shift right
 
-	# splitting/removing frames
-	# create an empty frame at the specified direction / explode into subframes
-	#hc keybind $Mod-apostrophe        split bottom
-	#hc keybind $Mod-bracketright      split right
-	hc keybind $Mod-Shift-z           split bottom
-	hc keybind $Mod-Shift-x           split explode
-	hc keybind $Mod-Shift-c           split right
-	# merge the current frame with its peer
-	hc keybind $Mod-x                 remove
-
 	hc keybind $Mod-Shift-space       rotate
 	hc keybind $Mod-Control-space     rotate
+
+	# splitting/removing/shifting frames
+	hc keybind $Mod-bracketleft          split bottom
+	hc keybind $Mod-bracketright         split right
+	hc keybind $Mod-backslash            split explode
+	hc keybind $Mod-Shift-bracketleft    remove
+	hc keybind $Mod-Shift-bracketright   remove
+	hc keybind $Mod-Shift-backslash      remove
+	hc keybind $Mod-Control-bracketleft  mirror vertical
+	hc keybind $Mod-Control-bracketright mirror horizontal
+	hc keybind $Mod-Control-backslash    mirror both
 
 	# resizing frames and floating clients
 	resizestep=0.02
