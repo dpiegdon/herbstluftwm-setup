@@ -253,8 +253,8 @@ hc_ui_config() {
 	# do multi monitor setup here, e.g.:
 	# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
 	# or simply:
-	hc detect_monitors
 	hc attr settings.auto_detect_monitors true
+	hc detect_monitors
 	# unlock, just to be sure
 	hc unlock
 }
