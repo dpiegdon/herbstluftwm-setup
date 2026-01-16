@@ -196,15 +196,15 @@ hc_ui_config() {
 
 	#####################
 	# BORDER WIDTHS
-	hc set frame_border_width        3
+	hc set frame_border_width        1
 	hc set show_frame_decorations    'if_multiple'
 	hc set frame_gap                 1
 
 	hc attr theme.inner_width        0
-	hc attr theme.border_width       3
+	hc attr theme.border_width       1
 
-	hc attr theme.floating.border_width 4
-	hc attr theme.floating.outer_width 1
+	hc attr theme.floating.border_width 1
+	hc attr theme.floating.outer_width 0
 	hc attr theme.floating.outer_color black
 
 	hc attr theme.tiling.outer_width 0
@@ -217,7 +217,7 @@ hc_ui_config() {
 
 	#####################
 	# BORDER COLORS
-	hc set frame_border_active_color '#ff0000'
+	hc set frame_border_active_color '#eeee00'
 	hc set frame_border_normal_color '#008888'
 
 	hc attr theme.active.color       '#00ff00'
