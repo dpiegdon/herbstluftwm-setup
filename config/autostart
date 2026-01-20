@@ -34,11 +34,15 @@ hc_ui_config() {
 	hc keybind XF86AudioLowerVolume   spawn amixer set Master 5%-
 	hc keybind XF86AudioRaiseVolume   spawn amixer set Master 5%+
 	hc keybind XF86AudioMicMute       spawn amixer sset Capture toggle
-	hc keybind XF86MonBrightnessDown  spawn backlightctl intel_backlight - 2
-	hc keybind XF86MonBrightnessUp    spawn backlightctl intel_backlight + 2
+	hc keybind XF86MonBrightnessDown       spawn backlightctl intel_backlight - 2
+	hc keybind XF86MonBrightnessUp         spawn backlightctl intel_backlight + 2
+	hc keybind Shift-XF86MonBrightnessDown spawn backlightctl intel_backlight - 15
+	hc keybind Shift-XF86MonBrightnessUp   spawn backlightctl intel_backlight + 15
+	hc keybind $Mod-XF86MonBrightnessDown  spawn backlightctl intel_backlight = 1
+	hc keybind $Mod-XF86MonBrightnessUp    spawn backlightctl intel_backlight = 100
 	hc keybind XF86Display            spawn displace landscape
 	hc keybind $Mod-XF86Display       spawn displace -av
-	hc keybind Shift-XF86Display      spawn displace portrait
+	#hc keybind Shift-XF86Display      spawn displace portrait
 	#hc keybind XF86WLAN
 	hc keybind XF86Messenger          spawn xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 1
 	hc keybind Shift-XF86Messenger    spawn xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
