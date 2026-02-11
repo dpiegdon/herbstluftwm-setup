@@ -1,4 +1,4 @@
 #!/bin/sh
 
-#exec stterm -f "Monoid-7" $@
-exec xterm -u8 $@
+exec st -f "PragmataPro-9" $@
+#exec xterm -u8 $@
