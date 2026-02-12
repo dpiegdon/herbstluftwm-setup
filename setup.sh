@@ -7,8 +7,7 @@ echo " - stterm"
 echo " - polybar"
 echo " - suckless-tools (for dmenu_run)"
 
-git submodule foreach git submodule init
-git submodule foreach git submodule update
+git submodule update --init --recursive
 git submodule foreach git clean -dfx
 git submodule foreach git reset HEAD --hard
 
