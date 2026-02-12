@@ -163,6 +163,10 @@ hc_ui_config() {
 	MouseLeft=Button1
 	MouseMiddle=Button2
 	MouseRight=Button3
+	MouseScrollUp=Button4
+	MouseScrollDown=Button5
+	MousePrev=Button8
+	MouseNext=Button9
 	hc mouseunbind --all
 	hc mousebind $Mod-$MouseLeft         move
 	hc mousebind $Mod-Shift-$MouseLeft   zoom
@@ -173,6 +177,12 @@ hc_ui_config() {
 	#hc mousebind $Mod-$MouseMiddle       call set_attr clients.focus.fullscreen toggle
 	#hc mousebind $Mod-$MouseRight        call set_attr clients.focus.minimized true
 	#hc mousebind $Mod-Shift-$MouseRight  call jumpto last-minimized
+	hc mousebind $Mod-$MouseNext         call split bottom
+	hc mousebind $Mod-Shift-$MouseNext   call remove
+	hc mousebind $Mod-Control-$MouseNext call mirror horizontal
+	hc mousebind $Mod-$MousePrev         call split right
+	hc mousebind $Mod-Shift-$MousePrev   call remove
+	hc mousebind $Mod-Control-$MousePrev call mirror vertical
 	hc set focus_follows_mouse           true
 	hc set snap_distance                 7
 	hc set snap_gap                      1
