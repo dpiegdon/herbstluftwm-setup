@@ -4,3 +4,6 @@
 [submodule "herbstluftwm"]
 	path = herbstluftwm
 	url = https://github.com/herbstluftwm/herbstluftwm
+[submodule "st"]
+	path = st
+	url = https://github.com/dpiegdon/st.git
