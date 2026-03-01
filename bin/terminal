@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # fast but plain emojis:
-exec st -f "PragmataPro-9" $@
+exec st -f "$TERMINALFONT" $@
 # slow but has colored emojis:
 #exec kitty -e $@
 # legacy codebase, can segfault due to some emojis, but good support and fast:
