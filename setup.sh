@@ -19,6 +19,11 @@ cmake ..
 make -j$(nproc)
 popd
 
+pushd st
+make
+strip st
+popd
+
 rm -rf $HOME/.config/herbstluftwm
 mkdir -p $HOME/.config/herbstluftwm
 ln -s $(pwd)/config/autostart $HOME/.config/herbstluftwm/autostart

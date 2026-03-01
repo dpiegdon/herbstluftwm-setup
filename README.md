@@ -10,6 +10,11 @@ Supposed to be checked out at ~/.herbstluftwm .
 Notes
 =====
 
+Installation
+------------
+
+see ./setup.sh
+
 Useful helper tools
 -------------------
 
@@ -23,7 +28,7 @@ Custom polybar
 
 CURRENTLY NOT USED!
 
-install
+installing custom polybar:
 
 * `libcairo2-dev`
 * `libuv1-dev`
