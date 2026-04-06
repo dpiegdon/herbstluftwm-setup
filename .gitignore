@@ -1,3 +1,4 @@
-xsession.local
 .*.swp
+.ccls-cache
 .swp
+xsession.local
