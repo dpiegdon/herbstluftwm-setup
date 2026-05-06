@@ -25,17 +25,17 @@ hc_ui_config() {
 	hc keybind $Mod-Control-Return    spawn terminal -e tmux -2 attach
 	hc keybind $Mod-BackSpace         spawn ~/.herbstluftwm/bin/dmenu_run_history -fn Monoid-7
 	hc keybind $Mod-Escape            spawn xlock
-	hc keybind $Mod-Ctrl-Escape       spawn systemctl hibernate
+	hc keybind $Mod-Control-Escape    spawn systemctl hibernate
 	hc keybind $Mod-Shift-Escape      spawn systemctl hibernate
-	hc keybind $Mod-Ctrl-Shift-Escape spawn systemctl hibernate
+	hc keybind $Mod-Control-Shift-Escape spawn systemctl hibernate
 
 	# laptop function row
 	hc keybind XF86AudioMute          spawn amixer sset Master toggle
 	hc keybind XF86AudioLowerVolume   spawn amixer set Master 5%-
 	hc keybind XF86AudioRaiseVolume   spawn amixer set Master 5%+
 	hc keybind XF86AudioMicMute       spawn amixer sset Capture toggle
-	hc keybind XF86MonBrightnessDown       spawn backlightctl intel_backlight - 2
-	hc keybind XF86MonBrightnessUp         spawn backlightctl intel_backlight + 2
+	hc keybind XF86MonBrightnessDown  spawn backlightctl intel_backlight - 2
+	hc keybind XF86MonBrightnessUp    spawn backlightctl intel_backlight + 2
 	hc keybind Shift-XF86MonBrightnessDown spawn backlightctl intel_backlight - 15
 	hc keybind Shift-XF86MonBrightnessUp   spawn backlightctl intel_backlight + 15
 	hc keybind $Mod-XF86MonBrightnessDown  spawn backlightctl intel_backlight = 1
@@ -56,6 +56,10 @@ hc_ui_config() {
 	hc keybind $Mod-v                 spawn paste_to_qrcode
 	hc keybind $Mod-s                 spawn /usr/bin/gnome-screenshot
 	hc keybind $Mod-Shift-s           spawn /usr/bin/gnome-screenshot --window
+	hc keybind $Mod-Alt-s             spawn /usr/bin/gnome-screenshot --interactive
+	hc keybind $Mod-Shift-s           spawn /usr/bin/gnome-screenshot --area
+	hc keybind $Mod-Control-s         spawn /usr/bin/gnome-screenshot        --clipboard
+	hc keybind $Mod-Shift-Control-s   spawn /usr/bin/gnome-screenshot --area --clipboard
 
 	# basic movement in tiling and floating mode
 	# focusing clients
