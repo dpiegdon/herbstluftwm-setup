@@ -165,15 +165,11 @@ apple_magic_trackpad2() {
 
 # laptop defaults
 laptop() {
-	IDS=$(device_ids "pointer" "SynPS/2 Synaptics TouchPad")
+	IDS=$(device_ids "pointer" "ELAN0676:00 04F3:3195 Touchpad")
 	for ID in $IDS; do
 		device_enable "$ID"
-		# reduce touchpad sensitivity
-		xinput set-prop "$ID" "Device Accel Velocity Scaling" 8
-	done
-	IDS=$(device_ids "pointer" "Wacom Pen and multitouch sensor Pen stylus")
-	for ID in $IDS; do
-		xinput set-prop "$ID" "Wacom Hover Click" 0
+		# enable two-/three-finger presses
+		xinput set-prop "$ID" "libinput Click Method Enabled" 0, 1
 	done
 }
 
