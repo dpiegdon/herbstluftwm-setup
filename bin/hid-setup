@@ -130,7 +130,7 @@ trackball_setup() {
 	for ID in $IDS; do
 		device_button_scrolling "$ID" 8
 		# sensitivity
-		xinput set-prop "$ID" "libinput Accel Speed" .7
+		xinput set-prop "$ID" "libinput Accel Speed" 1.0
 		# button + motion scrolling:
 		xinput set-prop "$ID" "libinput Scroll Method Enabled" 0 0 1
 	done
