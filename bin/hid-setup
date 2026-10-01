@@ -150,6 +150,10 @@ right_mouse() {
 	for ID in $IDS; do
 		device_button_scrolling "$ID" 8
 	done
+	IDS=$(device_ids "pointer" "MCHOSE L7 Pro")
+	for ID in $IDS; do
+		device_button_scrolling "$ID" 8
+	done
 }
 
 # default apple trackpad, also restart libinput-gestures
